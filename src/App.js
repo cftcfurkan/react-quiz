@@ -1,7 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useReducer } from "react";
 import Header from "./Header";
 import Main from "./Main";
-import { useReducer } from "react";
 
 const initialState = {
   questions: [],
@@ -26,10 +25,12 @@ function reducer(state, action) {
   }
 }
 export default function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
+
+  const numQuestions = questions.length;
 
   useEffect(function () {
-    fetch("http://localhost:3000/questions")
+    fetch("http://localhost:8000/questions")
       .then((res) => res.json())
       .then((data) => dispatch({ type: "dataReceived", payload: data }))
       .catch((err) => dispatch({ type: "dataFailed" }));
@@ -38,7 +39,7 @@ export default function App() {
   return (
     <div className="app">
       <Header />
-      <Main />
+      <Main status={status} numQuestions={numQuestions} />
     </div>
   );
 }
