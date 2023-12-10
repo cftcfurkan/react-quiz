@@ -7,6 +7,7 @@ import Error from "./Error";
 import StartScreen from "./StartScreen";
 import NextQuestion from "./NextQuestion";
 import Progress from "./Progress";
+import FinishedScreen from "./FinishedScreen";
 
 const initialState = {
   questions: [],
@@ -14,6 +15,7 @@ const initialState = {
   index: 0,
   answer: null,
   points: 0,
+  highscore: 0,
 };
 
 function reducer(state, action) {
@@ -50,23 +52,29 @@ function reducer(state, action) {
         index: state.index + 1,
         answer: null,
       };
-    case "prevQuestion":
+    case "finished":
       return {
         ...state,
-        index: state.index - 1,
+        status: "finished",
+        highscore:
+          state.points > state.highscore ? state.points : state.highscore,
+      };
+    case "restart":
+      return {
+        ...initialState,
+        questions: state.questions,
+        status: 'ready'
       };
     default:
       throw new Error("Action Unknown");
   }
 }
 export default function App() {
-  const [{ questions, status, index, answer, points }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [{ questions, status, index, answer, points, highscore }, dispatch] =
+    useReducer(reducer, initialState);
 
   const numQuestions = questions.length;
-  const maxPoints = questions?.reduce((prev, cur) => prev + cur.points,0);
+  const maxPoints = questions?.reduce((prev, cur) => prev + cur.points, 0);
 
   useEffect(function () {
     fetch("http://localhost:8000/questions")
@@ -98,8 +106,21 @@ export default function App() {
               dispatch={dispatch}
               answer={answer}
             />
-            <NextQuestion dispatch={dispatch} answer={answer} />
+            <NextQuestion
+              dispatch={dispatch}
+              numQuestions={numQuestions}
+              index={index}
+              answer={answer}
+            />
           </>
+        )}
+        {status === "finished" && (
+          <FinishedScreen
+            dispatch={dispatch}
+            highscore={highscore}
+            maxPoints={maxPoints}
+            points={points}
+          />
         )}
       </Main>
     </div>
