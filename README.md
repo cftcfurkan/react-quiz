@@ -22,7 +22,7 @@ This React Quiz Application is designed to facilitate quizzes by fetching questi
 
 1. Clone the repository:
    ```bash
-   git clone [<repository_url>](https://github.com/cftcfurkan/react-quiz.git)
+   git clone https://github.com/cftcfurkan/react-quiz.git
 2. Navigate to the project directory:
    ```bash
    cd react-quiz-app
@@ -33,19 +33,15 @@ This React Quiz Application is designed to facilitate quizzes by fetching questi
 ### Running the Application
 
 To start the development server and run the application:
-   ```bash
-   npm start
-
-
+```bash
+npm start
 This will launch the React Quiz Application in your default web browser.
 
 ### Backend (Mock API)
 
 The application uses JSON Server to mimic a backend server for fetching questions. Run the following script to start the mock API:
-  ```bash
-  npm run server
-
-
+```bash
+npm run server
 The mock API will be available at `http://localhost:8000/questions`.
 
 ## Application Structure
