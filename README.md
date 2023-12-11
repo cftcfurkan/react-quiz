@@ -43,6 +43,7 @@ This will launch the React Quiz Application in your default web browser.
 The application uses JSON Server to mimic a backend server for fetching questions. Run the following script to start the mock API:
 ```bash
 npm run server
+```
 The mock API will be available at `http://localhost:8000/questions`.
 
 ## Application Structure
