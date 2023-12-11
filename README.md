@@ -1,4 +1,4 @@
-https://github.com/cftcfurkan/react-quiz/assets/90473630/8c88cbdc-872b-4cf5-bf99-8d7fa16d630c
+[react-quiz.webm](https://github.com/cftcfurkan/react-quiz/assets/90473630/8d2b583b-4c68-4a09-a7b0-02b6f264123c)
 
 # React Quiz Application
 
@@ -21,7 +21,7 @@ This React Quiz Application is designed to facilitate quizzes by fetching questi
 ### Installation
 
 1. Clone the repository:
-   - git clone <repository_url>
+   - git clone [<repository_url>](https://github.com/cftcfurkan/react-quiz.git)
 2. Navigate to the project directory:
    - cd react-quiz-app
 3. Install dependencies:
