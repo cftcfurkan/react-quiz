@@ -35,6 +35,7 @@ This React Quiz Application is designed to facilitate quizzes by fetching questi
 To start the development server and run the application:
 ```bash
 npm start
+```
 This will launch the React Quiz Application in your default web browser.
 
 ### Backend (Mock API)
